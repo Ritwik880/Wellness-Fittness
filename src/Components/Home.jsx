@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { ColorRing } from 'react-loader-spinner';
+import Loading from './Loading';
 
 const Home = () => {
     const [items, setItems] = useState([]);
@@ -27,19 +27,7 @@ const Home = () => {
                 <div className='row container'>
                     <div className='box'>
                         {
-                            loading ? (
-                                <div className='common-class'>
-                                    <ColorRing
-                                        visible={true}
-                                        height="80"
-                                        width="80"
-                                        ariaLabel="color-ring-loading"
-                                        wrapperStyle={{}}
-                                        wrapperClass="color-ring-wrapper"
-                                        colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
-                                    />
-                                </div>
-                            ) : (
+                            loading ? (<Loading/>) : (
                                 <>
                                     {
                                         items && items.map((item, index) => {
