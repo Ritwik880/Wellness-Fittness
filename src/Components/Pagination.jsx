@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Pagination = ({currentPage, handlePrevious, handleNext}) => {
+const Pagination = ({ currentPage, maxPage, handlePrevious, handleNext }) => {
     return (
         <div className='common-class button-box'>
             <button
@@ -10,8 +10,9 @@ const Pagination = ({currentPage, handlePrevious, handleNext}) => {
                 Previous
             </button>
             <button
-                className='common-button'
-                onClick={handleNext}>
+                className={currentPage === maxPage ? 'disabled' : 'common-button mobile-css'}
+                onClick={handleNext}
+                disabled={currentPage === maxPage}>
                 Next
             </button>
         </div>

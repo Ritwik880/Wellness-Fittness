@@ -1,7 +1,8 @@
 #root {
   --primary: rgb(25, 42, 86);
   --secondary: #EBECEE;
-  --text: #FFFFFF
+  --text: #FFFFFF;
+  --black: var(--black)
 }
 
 * {
@@ -57,7 +58,7 @@
 
 .card {
   background-color: var(--secondary);
-  height: 450px;
+  height: 490px;
   border: none;
 }
 
@@ -89,12 +90,12 @@
 
 .disabled {
   background-color: var(--secondary);
-  color: #000000;
+  color: var(--black);
   padding: 10px 20px;
   border-radius: 6px;
   font-weight: 600;
   border: none;
-  cursor: grab;
+  cursor: not-allowed;
 }
 
 .bucket {
@@ -113,7 +114,7 @@
 
 .banner-image {
   object-fit: cover;
-  object-position: top;
+  object-position: center;
   height: 100%;
 }
 
@@ -145,32 +146,42 @@
 }
 
 @media (max-width: 767px) {
-  .card-section {
-    height: 800px;
-  }
 
   .form-control {
     width: 100%;
     padding: 15px;
   }
 
-  .common-button{
+  .common-button {
     background-color: var(--secondary);
-    color: #000000;
+    color: var(--black);
+  }
+
+  .mobile-css {
+    background-color: var(--primary);
+    color: var(--text);
+    border-radius: 20px;
+  }
+
+  .disabled {
+    background-color: var(--primary);
+    color: var(--text);
+    border-radius: 20px;
   }
 
   .form-control {
-    background-color: var(--secondary);
-    color: #000000;
+    background-color: var(--text);
+    color: var(--black);
+    border: 1px solid grey;
   }
-  
+
   .form-control::placeholder {
-    color: #000000;
+    color: var(--black);
   }
-  
+
   .form-control:focus {
     background-color: var(--secondary);
-    color: #000000;
+    color: var(--black);
   }
 
   .bucket {
@@ -201,8 +212,6 @@
   }
 
   .footer {
-    position: fixed;
-    bottom: 0;
     background-color: var(--text);
     width: 100%;
   }

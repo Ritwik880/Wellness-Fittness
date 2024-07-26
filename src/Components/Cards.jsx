@@ -12,6 +12,7 @@ const Cards = () => {
     const [filteredResults, setFilteredResults] = useState([]);
     const [selectedDate, setSelectedDate] = useState('');
     const [selectedType, setSelectedType] = useState('');
+    const [maxPage, setMaxPage] = useState(1);
 
     const limit = 3;
 
@@ -20,8 +21,14 @@ const Cards = () => {
             setLoading(true);
             const response = await fetch(`https://669f704cb132e2c136fdd9a0.mockapi.io/api/v1/retreats?page=${page}&limit=${limit}`);
             const data = await response.json();
-            setItems(data);
             setLoading(false);
+
+            if (data.length === 0) {
+                setMaxPage(currentPage);
+            } else {
+                setItems(data);
+                setMaxPage(currentPage + (data.length < limit ? 0 : 1));
+            }
         } catch (error) {
             console.error(error);
             setLoading(false);
@@ -33,11 +40,13 @@ const Cards = () => {
     }, [currentPage]);
 
     const handleNext = () => {
-        setCurrentPage(prevPage => prevPage + 1);
+        if (currentPage < maxPage) {
+            setCurrentPage(prevPage => prevPage + 1);
+        }
     };
 
     const handlePrevious = () => {
-        setCurrentPage(prevPage => prevPage > 1 ? prevPage - 1 : 1);
+        setCurrentPage(prevPage => (prevPage > 1 ? prevPage - 1 : 1));
     };
 
     const searchItems = (searchValue) => {
@@ -74,7 +83,6 @@ const Cards = () => {
 
         setFilteredResults(filteredData);
     };
-
 
     const filterData = () => {
         setInput('');
@@ -123,7 +131,7 @@ const Cards = () => {
                         </>
                     )}
                 </div>
-                <Pagination currentPage={currentPage} handlePrevious={handlePrevious} handleNext={handleNext}/>
+                <Pagination currentPage={currentPage} handlePrevious={handlePrevious} handleNext={handleNext} maxPage={maxPage} />
             </div>
         </section>
     );

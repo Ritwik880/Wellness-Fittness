@@ -33,7 +33,7 @@ const Home = () => {
                                         items && items.map((item, index) => {
                                             return (
                                                 <div key={index}>
-                                                    <img src={item.image} alt={item.title} className='banner-image'/>
+                                                    <img src='https://images.unsplash.com/photo-1510894347713-fc3ed6fdf539?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8WW9nYXxlbnwwfHwwfHx8MA%3D%3D' alt={item.title} className='banner-image'/>
                                                     <h6 className='heading'>
                                                         {item.title}
                                                     </h6>

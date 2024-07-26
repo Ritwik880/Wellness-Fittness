@@ -64,7 +64,7 @@ const Filter = ({
 
                 <div>
                     <button className='common-button' onClick={filterData}>
-                        <MdFilterAlt />
+                        Filter <MdFilterAlt style={{marginBottom: '4px'}}/>
                     </button>
                 </div>
             </div>
